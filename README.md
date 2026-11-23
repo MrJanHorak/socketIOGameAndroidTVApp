@@ -4,6 +4,18 @@ A small launcher app that shows the game's shared "host" screen full screen on
 an Android TV (or Google TV / Fire TV-style stick, or a tablet). Phones still
 join by scanning the QR code on the TV.
 
+![The Science Fair lobby as the TV app shows it: QR code, room code and crew seats](docs/images/tv-lobby.png)
+
+| Showcase on the TV | Settings with the remote |
+| --- | --- |
+| ![An invention being presented, with its sketch](docs/images/tv-showcase.png) | ![Settings sheet with volume steppers and voice options](docs/images/tv-settings.png) |
+
+| Final awards | The host runs the show from a phone |
+| --- | --- |
+| ![Final awards with winner, standings and People's Choice ribbon](docs/images/tv-finale.png) | ![Host controls on the host player's phone](docs/images/phone-host-controls.png) |
+
+These are rendered at the TV app's own size (a 960×540 web view at 2× density, which is what a 1080p Android TV shows), from an automated playthrough of the current build.
+
 What it adds over opening the page in a TV browser:
 
 - A tile on the TV home screen.
@@ -13,9 +25,10 @@ What it adds over opening the page in a TV browser:
 - Narration uses the TV's own text-to-speech (Android WebView has no browser speech).
 - Back closes an open dialog on the page (like Settings); otherwise it opens a small menu: back to game, new room, or change server.
 
-The host player runs the show from their phone (start, next invention,
-standings, next round, ribbon, play again), so you shouldn't need the remote
-once the lobby is up.
+The host player runs the show from their phone (start, end sketching, skip
+through the showcase, next invention, standings, next round, ribbon, play
+again), so you shouldn't need the remote once the lobby is up. When you do,
+arrow keys and OK reach every button, including Settings.
 
 ## 1. Run the game on your computer
 
