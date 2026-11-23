@@ -33,23 +33,15 @@ when asked.
 ## 2. Build the APK
 
 1. Install [Android Studio](https://developer.android.com/studio).
-2. **File → Open** this `androidTvApp` folder and let Gradle sync (first sync downloads Gradle and the Android SDK pieces).
-3. **Build → Build App Bundle(s) / APK(s) → Build APK(s)**. The APK lands in `app/build/outputs/apk/debug/app-debug.apk`.
+2. Double-click `open-in-android-studio.bat` (or **File → Open** this folder) and let Gradle sync. The project uses Gradle 9.3.1 and Android Gradle Plugin 9.1.1, which run on the JDK 25 bundled with current Android Studio.
+3. **Build → Generate App Bundles or APKs → Generate APKs**. The APK lands in `app/build/outputs/apk/debug/app-debug.apk`.
 
 ## 3. Install it on the TV
 
-Pick one:
+1. On the TV, turn on developer mode (**Settings → System → About**, click **Android TV OS build** 7 times), then turn on **USB debugging** / **Network debugging** in **Developer options**.
+2. Double-click `install-on-tv.bat` (pass a different IP as the first argument if your TV isn't `192.168.1.103`). It finds `adb` from the SDK Android Studio uses, connects, waits while you accept **Allow debugging?** on the TV (tick **Always allow**), installs the APK and starts the app. Its output is also saved to `install-log.txt`.
 
-- **adb over Wi-Fi** (most reliable): on the TV enable *Developer options* (Settings → Device Preferences → About → click *Build* 7 times), turn on *USB/Network debugging*, then from your computer:
-
-  ```bash
-  adb connect <tv-ip-address>
-  adb install -r app/build/outputs/apk/debug/app-debug.apk
-  ```
-
-  `adb` is in the Android SDK `platform-tools` folder that Android Studio installs.
-- **Run from Android Studio**: after `adb connect`, the TV appears in the device dropdown — press Run.
-- **Send Files to TV / a USB stick + a file manager** if you prefer no developer options (allow "install unknown apps" for that file manager).
+Manual alternative: `adb connect <tv-ip>:5555` then `adb install -r app/build/outputs/apk/debug/app-debug.apk`. You can also pick the TV in Android Studio's device menu after connecting and press Run.
 
 ## 4. Play
 
