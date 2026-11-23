@@ -11,7 +11,7 @@ What it adds over opening the page in a TV browser:
 - Opens `/tv`, which creates a Science Fair room and shows the lobby straight away.
 - Plays music and sound without needing a click, and keeps the TV awake.
 - Narration uses the TV's own text-to-speech (Android WebView has no browser speech).
-- Back button opens a small menu: back to game, new room, or change server.
+- Back closes an open dialog on the page (like Settings); otherwise it opens a small menu: back to game, new room, or change server.
 
 The host player runs the show from their phone (start, next invention,
 standings, next round, ribbon, play again), so you shouldn't need the remote
@@ -40,6 +40,8 @@ when asked.
 
 1. On the TV, turn on developer mode (**Settings → System → About**, click **Android TV OS build** 7 times), then turn on **USB debugging** / **Network debugging** in **Developer options**.
 2. Double-click `install-on-tv.bat` (pass a different IP as the first argument if your TV isn't `192.168.1.103`). It finds `adb` from the SDK Android Studio uses, connects, waits while you accept **Allow debugging?** on the TV (tick **Always allow**), installs the APK and starts the app. Its output is also saved to `install-log.txt`.
+
+`tv-screenshot.bat` saves what the TV is showing to `tv-screen.png` (handy for checking text size).
 
 Manual alternative: `adb connect <tv-ip>:5555` then `adb install -r app/build/outputs/apk/debug/app-debug.apk`. You can also pick the TV in Android Studio's device menu after connecting and press Run.
 

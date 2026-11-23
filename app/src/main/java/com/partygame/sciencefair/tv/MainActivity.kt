@@ -224,7 +224,14 @@ class MainActivity : Activity() {
                 }
                 return super.onKeyDown(keyCode, event) // Back on the setup screen exits the app.
             }
-            showSetup(null)
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                // Back first closes an open dialog on the page (like Settings); otherwise opens the app menu.
+                webView.evaluateJavascript(CLOSE_DIALOG_JS) { result ->
+                    if (result != "true") showSetup(null)
+                }
+            } else {
+                showSetup(null)
+            }
             return true
         }
         return super.onKeyDown(keyCode, event)
@@ -345,6 +352,8 @@ class MainActivity : Activity() {
 
     companion object {
         private const val KEY_SERVER = "server_url"
+        private const val CLOSE_DIALOG_JS =
+            "(function(){var d=document.querySelector('dialog[open]');if(d){d.close();return true;}return false;})()"
         private const val MATCH = ViewGroup.LayoutParams.MATCH_PARENT
     }
 }
