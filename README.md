@@ -22,7 +22,7 @@ What it adds over opening the page in a TV browser:
 - Remembers your game server address.
 - Opens `/tv`, which creates a Science Fair room and shows the lobby straight away.
 - Plays music and sound without needing a click, and keeps the TV awake.
-- Narration uses the TV's own text-to-speech (Android WebView has no browser speech).
+- Committee lines play from the game's recordings and inventions use the local voice when it's running. The TV's own text-to-speech is used only when *Built-in voice fallback* is on in Settings (Android WebView has no browser speech, so the app provides it).
 - Back closes an open dialog on the page (like Settings); otherwise it opens a small menu: back to game, new room, or change server.
 
 The host player runs the show from their phone (start, end sketching, skip
